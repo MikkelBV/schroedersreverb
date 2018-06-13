@@ -6,5 +6,5 @@ function combinedSignal = combineSignals(signals)
       combination = combination + signals( : , n);
   end
   
-  combinedSignal = combination / signalSize;
+  combinedSignal = combination / numSignals;
 end

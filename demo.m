@@ -15,38 +15,21 @@ allPassDelay = [
     ];
 combType = 'IIR';
 %% Perform Schroeder's Reverb algorithm on raw signal
-signal1 = schroederReverb(rawsignal, Fs, combDelay, combType, allPassDelay, 0.9, 0.5);
+signal1 = schroederReverb(rawsignal, Fs, combDelay, combType, allPassDelay, 0.5);
 
 combDelay = [   
-        50
-        50
-        50 
-        50
+        1000
+        2000
+        3000
+        4000
     ];
 allPassDelay = [   
         0.7
         0.7
-        0.7
-        0.7
-        0.7
     ];
-combType = 'IIR';
+combType = 'FIR';
 %% Perform Schroeder's Reverb algorithm on raw signal
-signal2 = schroederReverb(rawsignal, Fs, combDelay, combType, allPassDelay, 0.9, 0.5);
-
-combDelay = [   
-        500
-        500
-        500
-        500
-    ];
-allPassDelay = [   
-        0.9
-        0.5
-    ];
-combType = 'IIR';
-%% Perform Schroeder's Reverb algorithm on raw signal
-signal3 = schroederReverb(rawsignal, Fs, combDelay, combType, allPassDelay, 0.9, 0.5);
+signal2 = schroederReverb(rawsignal, Fs, combDelay, combType, allPassDelay, 0.5);
 
 disp('Now playing raw signal.');
 soundsc(rawsignal, Fs);
@@ -55,15 +38,10 @@ pause;
 
 disp('Now playing filtered signal!');
 soundsc(signal1, Fs);
-plotSignal(signal1, 'Filtered signal');
+plotSignal(signal1, 'IIR signal');
 pause;
 
 disp('Now playing filtered signal!');
 soundsc(signal2, Fs);
-plotSignal(signal2, 'Filtered signal, low delay');
-pause;
+plotSignal(signal2, 'FIR signal');
 
-disp('Now playing filtered signal!');
-soundsc(signal3, Fs);
-plotSignal(signal3, 'Filtered signal');
-pause;
