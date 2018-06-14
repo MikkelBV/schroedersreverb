@@ -188,6 +188,21 @@ combType11 = 'IIR';
 coefficient11 = 0.6;
 signal11 = schroederReverb(rawsignal, Fs, combDelay11, combType11, allPassDelay11, coefficient11);
 
+%% ex 12
+combDelay12 = [   
+        50
+        200
+        300
+        350
+    ];
+allPassDelay12 = [   
+        0.7
+        0.7
+    ];
+combType12 = 'IIR';
+coefficient12 = 0.9;
+signal12 = schroederReverb(rawsignal, Fs, combDelay12, combType12, allPassDelay12, coefficient12, true);
+
 %% play demos
 disp('Now playing raw signal.');
 soundsc(rawsignal, Fs);
@@ -203,6 +218,17 @@ disp('combType:');
 disp(combType1);
 soundsc(signal1, Fs);
 plotSignal(signal1, 'IIR');
+pause;
+
+disp('Now playing filtered signal.');
+disp('combFilterDelays:');
+disp(combDelay12);
+disp('allPassCoeffs:');
+disp(allPassDelay12);
+disp('combType:');
+disp(combType12);
+soundsc(signal12, Fs);
+plotSignal(signal12, 'IIR with high coefficient');
 pause;
 
 disp('Now playing filtered signal.');
@@ -279,7 +305,7 @@ disp(allPassDelay10);
 disp('combType:');
 disp(combType10);
 soundsc(signal10, Fs);
-plotSignal(signal10, 'alternative_allpass');
+plotSignal(signal10, 'alternative allpass');
 pause;
 
 disp('Now playing filtered signal.');
@@ -290,7 +316,7 @@ disp(allPassDelay11);
 disp('combType:');
 disp(combType11);
 soundsc(signal11, Fs);
-plotSignal(signal11, 'dfilt.allpass');
+plotSignal(signal11, 'Matlabs allpass: dfilt.allpass');
 pause;
 
 disp('HEADPHONES OFF and hit a key to continue');

@@ -1,5 +1,5 @@
 function filteredSignal = alternative_allpass(inputSignal, c)
-  % filteredSignal = filter(dfilt.allpass(c), inputSignal);
+  % somewhat unsuccesful attempt at implementing an allpass filter
   % y(n) = -c x(n) + c y(n - 1)
   filteredSignal = zeros(length(inputSignal), 1);
 
